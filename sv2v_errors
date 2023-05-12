@@ -1,0 +1,3 @@
+integer signed -> integer (standard verilog)
+integer unsigned -> does not exist in standard verilog (can it be eliminated though?)
+struct resolution (look at various/struct_access.sv)

@@ -1,0 +1,36 @@
+From: Suya Liu, University of Toronto
+
+I used to Online Generator at the following address:
+
+http://www.eecg.utoronto.ca/~jayar/software/LUgen/
+
+Step 1: Enter the size you want and the corresponding Matrix block size. I used the same value for both.
+
+Step 1.5: If you are creating something greater than 128, you will need to do 2 things:
+		1. open wfifo.v and change the parameter FIFOOUTPUTWIDTH to a value that is = FIFOINPUTWIDTH/32.
+		2. open rfifo.v and change the parameter FIFOINPUTWIDTH to a value that is = FIFOOUTPUTWIDTH/32.
+
+Step 2: open LU_template.v located in this folder, and the top_level file located in the generated code. This file should be called LU<size>PEEng.v (for example, LU64PEEng.v). 
+
+Step 3: Copy the code of the parameter values from the generated file into the template and change the name of the top module as desired. 
+
+Step 4: Replace the gerenated file with the newly created code from the template.
+
+Step 4: Include the following files in the project, essentially every .v file except alt_mem_phy_defines.v and any file that starts with ddr2:
+addr_fifo.v
+DataTransferUnit.v
+divsp.v
+LU.v
+LU<size>PEENG.v (eg LU64PEEng.v)
+LUControl.v
+MarsharllerController.v
+memcmd_fifo.v
+mult_add.v
+multsplat11.v
+ram.v
+rfifo.v
+subsplat14.v
+top_ram.v
+wfifo.v
+
+Aug 8, 2012

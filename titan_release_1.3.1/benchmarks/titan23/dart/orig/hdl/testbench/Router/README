@@ -1,0 +1,32 @@
+This is the testbench for the Router component.
+
+Files included:
+    Makefile
+    arch9_8x8
+    m3x3.topology
+    Router_tb.v
+    prep_test.sh
+    sim.do
+    wave.do
+
+The Router component is tested using traces extracted from the simulation
+of a 3x3 mesh network in the architecture simulator. The traces capture
+the input and output of a single router in the network and we use these
+traces to test the functionality of the Router component.
+
+To run the testbench, follow these steps:
+
+1. Use prep_test.sh to generate the trace and configuration byte-stream
+   that is used to configure the Router module under test
+   
+       ./prep_test.sh m3x3.topology arch9_8x8 1
+
+   This command runs the architecture simulator and generates the trace 
+   file for Router 1.
+
+2. Launch Modelsim
+3. Run 'make' to build the Verilog simulation library
+4. Run 'make dpilib' to build the DPI library
+5. Run 'do sim.do' to run the simulation
+
+Check the simulation output (stored in 'transcript') for error messages.

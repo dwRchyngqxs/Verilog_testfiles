@@ -1,0 +1,20 @@
+// Quartus II Verilog Template
+// Binary up/down counter
+
+module binary_up_down_counter
+#(parameter WIDTH=64)
+(
+	input clk, enable, count_up, reset,
+	output reg [WIDTH-1:0] count
+);
+
+	// Reset if needed, increment or decrement if counting is enabled
+	always @ (posedge clk or posedge reset)
+	begin
+		if (reset)
+			count <= 0;
+		else if (enable == 1'b1)
+			count <= count + (count_up ? 1 : -1);
+	end
+
+endmodule
